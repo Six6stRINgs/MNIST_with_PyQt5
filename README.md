@@ -1,7 +1,7 @@
 # MNIST System
 
 ## Description/软件描述
-An assignment for my school coures software engineering.
+An assignment for my school course software engineering.
 
 This is a simple system that allows users to upload a digital picture and then classify it using a neural network. 
 The system is built using Python and PyQt5. 
