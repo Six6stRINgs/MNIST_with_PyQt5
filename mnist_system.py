@@ -110,8 +110,7 @@ class mnist_System:
 
     def __login_init(self):
         self.login_dialog.setWhatsThis("Login dialog for mnist system. \n"
-                                       "An assignment of software engineering. \n"
-                                       "Author: a CS21-1 student from NCUT.")
+                                       "An assignment of software engineering. \n")
         self.login_ori_ui.login_btn.clicked.connect(self.__login_check)
         self.login_ori_ui.signin_btn.clicked.connect(lambda:
                                                      self.__signin(self.login_dialog,

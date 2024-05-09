@@ -5,7 +5,6 @@ import argparse
 
 if __name__ == '__main__':
     app = QApplication([])
-
     parser = argparse.ArgumentParser(description='mnist system')
     parser.add_argument('--host', type=str, default='localhost', help='host of mysql server')
     parser.add_argument('--user', type=str, default='root', help='user of mysql server')
