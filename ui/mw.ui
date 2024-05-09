@@ -1,0 +1,1787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1042</width>
+    <height>991</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MNIST识别系统</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qrc/resources.qrc">
+    <normaloff>:/picture/computer.png</normaloff>:/picture/computer.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="mw_label">
+      <property name="font">
+       <font>
+        <family>微软雅黑 Light</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>MNIST识别系统</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="user_top_label">
+      <property name="font">
+       <font>
+        <family>微软雅黑 Light</family>
+        <pointsize>9</pointsize>
+        <italic>true</italic>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>User </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideNone</enum>
+      </property>
+      <widget class="QWidget" name="model_wid">
+       <attribute name="title">
+        <string>模型与识别</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QTabWidget" name="model_tabWidget">
+          <property name="tabPosition">
+           <enum>QTabWidget::West</enum>
+          </property>
+          <property name="tabShape">
+           <enum>QTabWidget::Triangular</enum>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>18</width>
+            <height>14</height>
+           </size>
+          </property>
+          <property name="elideMode">
+           <enum>Qt::ElideLeft</enum>
+          </property>
+          <property name="documentMode">
+           <bool>false</bool>
+          </property>
+          <property name="movable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="model_setting_wid">
+           <attribute name="title">
+            <string>训练模型设置</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetDefaultConstraint</enum>
+              </property>
+              <item>
+               <widget class="QLabel" name="para_label">
+                <property name="font">
+                 <font>
+                  <family>微软雅黑 Light</family>
+                  <pointsize>11</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>参数设置：</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="para_line">
+                <property name="font">
+                 <font>
+                  <pointsize>9</pointsize>
+                 </font>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <item row="3" column="1">
+                 <widget class="QDoubleSpinBox" name="lr_dspin">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <property name="decimals">
+                   <number>3</number>
+                  </property>
+                  <property name="singleStep">
+                   <double>0.001000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.001000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QComboBox" name="loss_combo">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>180</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>CrossEntropy</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Focal</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="lr_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Learning rate:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="model_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Model:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QSpinBox" name="batch_spin">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>500</number>
+                  </property>
+                  <property name="singleStep">
+                   <number>8</number>
+                  </property>
+                  <property name="value">
+                   <number>64</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="loss_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Loss function:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QLabel" name="device_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Device:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QSpinBox" name="epoch_spin">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="value">
+                   <number>5</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QComboBox" name="opt_combo">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Adam</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>SGD</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>RMSprop</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Adagrad</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="batch_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Batch size:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="model_combo">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>MLP</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>AlexNet</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ResNet18</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ResNet34</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>ViT</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="epoch_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Epochs:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="opt_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Optimizer:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="QComboBox" name="device_combo">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>GPU</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>CPU</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="6" column="0">
+                 <widget class="QLabel" name="dropout_label">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Dropout:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="1">
+                 <widget class="QDoubleSpinBox" name="dropout_dspin">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <double>1.000000000000000</double>
+                  </property>
+                  <property name="value">
+                   <double>0.200000000000000</double>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="train_model_btn">
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Mono SemiBold</family>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::StrongFocus</enum>
+                </property>
+                <property name="contextMenuPolicy">
+                 <enum>Qt::DefaultContextMenu</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Train</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QProgressBar" name="train_progressBar">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Code</family>
+                 </font>
+                </property>
+                <property name="value">
+                 <number>0</number>
+                </property>
+                <property name="invertedAppearance">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="train_textinfo">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>500</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Cascadia Mono</family>
+                 </font>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="html">
+                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cascadia Mono'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;gt;Info:&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'SimSun'; font-weight:600;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="model_setting_midline">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTabWidget" name="model_left_tabWidget">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+               </font>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="vis_page">
+               <attribute name="title">
+                <string>Model Structure</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <item>
+                   <widget class="QLabel" name="vis_label">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Mono</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Visualizer:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="refresh_brower_btn">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>30</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>↺</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QWidget" name="vis_wid" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_4"/>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="loss_plot_page">
+               <attribute name="title">
+                <string>Loss Plot</string>
+               </attribute>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QLabel" name="loss_plot_label">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Mono</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Loss Plot:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QWidget" name="loss_plot_wid" native="true">
+                  <layout class="QVBoxLayout" name="verticalLayout_7"/>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="classification_wid">
+           <attribute name="title">
+            <string>数字识别</string>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="title_label">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑 Light</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>数字识别</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="Line" name="line_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <item>
+                 <widget class="QLabel" name="label_2">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑 Light</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>选择模型：</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="cls_model_sel_combo">
+                  <property name="font">
+                   <font>
+                    <family>Cascadia Code</family>
+                   </font>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="cls_begin_btn">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑 Light</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>识别</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <item row="1" column="4">
+                 <widget class="QLabel" name="network_name_label">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑 Light</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>深度学习模型</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLabel" name="label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>70</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>40</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>➜</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <widget class="QLabel" name="input_label">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>微软雅黑 Light</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>输入图片：</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="input_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>微软雅黑 Light</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>选择图片</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="progress_label">
+                  <property name="font">
+                   <font>
+                    <family>微软雅黑 Light</family>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>处理后图片</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLabel" name="label_15">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>70</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>40</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>➜</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QWidget" name="network_widget" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>400</width>
+                    <height>450</height>
+                   </size>
+                  </property>
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7"/>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QWidget" name="input_pic_widget" native="true">
+                  <property name="styleSheet">
+                   <string notr="true">background-color:rgb(216, 216, 216)</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8"/>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QWidget" name="progress_pic_widget" native="true">
+                  <property name="styleSheet">
+                   <string notr="true">background-color:rgb(216, 216, 216)</string>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9"/>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="res_label">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>微软雅黑 Light</family>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>预测结果</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="NumRes_gridLayout">
+                <item row="2" column="0">
+                 <layout class="QHBoxLayout" name="p0_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p0_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;0&lt;/sub&gt;=</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p0_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p0_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="8">
+                 <widget class="QLCDNumber" name="p6_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>6</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLCDNumber" name="p0_lcdNumber">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>80</width>
+                    <height>80</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>150</height>
+                   </size>
+                  </property>
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="7">
+                 <widget class="QLCDNumber" name="p5_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>5</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <layout class="QHBoxLayout" name="p1_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p1_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;1&lt;/sub&gt;=</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p1_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p1_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="11">
+                 <widget class="QLCDNumber" name="p9_lcdNumber">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>9</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="QLCDNumber" name="p3_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>3</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="9">
+                 <widget class="QLCDNumber" name="p7_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>7</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="6">
+                 <widget class="QLCDNumber" name="p4_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>4</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="10">
+                 <widget class="QLCDNumber" name="p8_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>8</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="8">
+                 <layout class="QHBoxLayout" name="p6_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p6_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;6&lt;/sub&gt;=</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p6_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p6_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLCDNumber" name="p1_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="10">
+                 <layout class="QHBoxLayout" name="p8_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p8_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;8&lt;/sub&gt;=</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p8_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p8_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="7">
+                 <layout class="QHBoxLayout" name="p5_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p5_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;5&lt;/sub&gt;=</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p5_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p5_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="9">
+                 <layout class="QHBoxLayout" name="p7_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p7_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;7&lt;/sub&gt;=</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p7_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p7_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="4">
+                 <layout class="QHBoxLayout" name="p2_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p2_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;2&lt;/sub&gt;=</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p2_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p2_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="5">
+                 <layout class="QHBoxLayout" name="p3_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p3_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;3&lt;/sub&gt;=</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p3_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p3_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QLCDNumber" name="p2_lcdNumber">
+                  <property name="digitCount">
+                   <number>1</number>
+                  </property>
+                  <property name="intValue" stdset="0">
+                   <number>2</number>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="6">
+                 <layout class="QHBoxLayout" name="p4_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p4_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;4&lt;/sub&gt;=</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p4_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p4_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="11">
+                 <layout class="QHBoxLayout" name="p9_horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="p9_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>P&lt;sub&gt;9&lt;/sub&gt;=</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="p9_line">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                     </font>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Box</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="p9_btn">
+                    <property name="maximumSize">
+                     <size>
+                      <width>20</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>✓</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <layout class="QFormLayout" name="formLayout">
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="acc_top1_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Accuracy&lt;span style=&quot; vertical-align:sub;&quot;&gt;top1:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="acc_top5_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Accuracy&lt;span style=&quot; vertical-align:sub;&quot;&gt;top5&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="acc_top3_label">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Accuracy&lt;span style=&quot; vertical-align:sub;&quot;&gt;top3&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="acc_top1_num">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code Light</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="acc_top3_num">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code Light</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="acc_top5_num">
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code Light</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_13">
+                  <item>
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Expanding</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="sel_label">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Cascadia Code</family>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Selected Label:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLCDNumber" name="sel_label_lcdNumber">
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>80</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>150</height>
+                     </size>
+                    </property>
+                    <property name="whatsThis">
+                     <string>-1 refers to no label selected</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="lineWidth">
+                     <number>1</number>
+                    </property>
+                    <property name="smallDecimalPoint">
+                     <bool>false</bool>
+                    </property>
+                    <property name="digitCount">
+                     <number>2</number>
+                    </property>
+                    <property name="value" stdset="0">
+                     <double>-1.000000000000000</double>
+                    </property>
+                    <property name="intValue" stdset="0">
+                     <number>-1</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="user_wid">
+       <attribute name="title">
+        <string>用户管理</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="create_usr_btn">
+            <property name="text">
+             <string>新建用户</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="select_usr_btn">
+            <property name="text">
+             <string>查询用户</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="update_usr_btn">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>修改</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="delete_usr_btn">
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>删除</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="refresh_usr_btn">
+            <property name="text">
+             <string>刷新</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="usr_tablewidget"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1042</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>设置</string>
+    </property>
+    <addaction name="re_login"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="re_login">
+   <property name="text">
+    <string>重新登录</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../qrc/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
