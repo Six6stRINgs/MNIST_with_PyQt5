@@ -15,6 +15,7 @@ But ViT is currently not supported for visualization.
 (Tranformer_encoder layer cannot be exported using ```torch.onnx.export``` directly)
 
 MySQL database is used only to store the user's information.
+(Required by the experimental task)
 
 Users can set their own username and password.
 
@@ -34,6 +35,7 @@ Users can set their own username and password.
 
 ## Environment/环境
 
+- MySQL
 - Python3.11.5
 - PyQt5
 - PyQt5_sip
@@ -55,14 +57,18 @@ Install the required packages by running the following command:
 ```bash
 pip install -r requirements.txt
 ```
-## Run
 
-```Activate the software
-python python main.py 
+## Usage/使用
+
+run ```mysql.sql``` first to create the database and tables.
+
+
+```bash
+python  main.py 
         --host {your_db_host} 
         --user {your_db_user} 
         --password {your_db_password} 
-        --database {your_db_name} 
+        --database db_mnist_exp
         --login_without_info {True/False}
 ```
 
