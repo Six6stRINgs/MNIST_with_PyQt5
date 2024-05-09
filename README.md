@@ -4,7 +4,7 @@
 An assignment for my school course software engineering.
 
 This is a simple system that allows users to upload a digital picture and then classify it using a neural network. 
-The system is built using Python and PyQt5. 
+The GUI system is built using PyQt5. 
 The neural network is built using PyTorch and is trained on the MNIST dataset.
 
 Training hyperparameters and models are customizable.
@@ -14,12 +14,12 @@ Using netron to visualize the model.
 But ViT is currently not supported for visualization.
 (Tranformer_encoder layer cannot be exported using ```torch.onnx.export``` directly)
 
-Database is used only to store the user's information.
+MySQL database is used only to store the user's information.
 
 Users can set their own username and password.
 
 一个学校课程软件工程的实验作业。
-使用PyQt5构建的一个简单的系统，允许用户上传一个数字图片，然后使用神经网络对其进行分类。
+使用PyQt5构建的一个简单的GUI，允许用户上传一个数字图片，然后使用神经网络对其进行分类。
 神经网络使用PyTorch构建，并在MNIST数据集上进行训练。
 
 训练超参数与模型是可以自定义的。
@@ -28,7 +28,7 @@ Users can set their own username and password.
 使用netron来可视化模型。
 但是ViT目前不支持可视化。(Tranformer_encoder层无法使用```torch.onnx.export```直接导出)
 
-而数据库仅用于存储用户的信息。(实验任务要求)
+使用MySQL数据库，仅用于存储用户的信息。(实验任务要求)
 
 用户可以设置自己的用户名和密码
 
