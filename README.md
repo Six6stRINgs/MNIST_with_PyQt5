@@ -60,7 +60,7 @@ pip install -r requirements.txt
 
 ## Usage/使用
 
-run ```mysql.sql``` first to create the database and tables.
+run ```mysql.sql``` first to create the database and table.
 
 
 ```bash
