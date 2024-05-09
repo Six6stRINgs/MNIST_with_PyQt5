@@ -7,26 +7,44 @@ This is a simple system that allows users to upload a digital picture and then c
 The system is built using Python and PyQt5. 
 The neural network is built using PyTorch and is trained on the MNIST dataset.
 
+Training hyperparameters and models are customizable.
+Currently, the models provided are MLP, AlexNet, ResNet, and ViT.
+
+Using netron to visualize the model.
+But ViT is currently not supported for visualization.
+(Tranformer_encoder layer cannot be exported using ```torch.onnx.export``` directly)
+
 Database is used only to store the user's information.
 
 一个学校课程软件工程的实验作业。
 使用PyQt5构建的一个简单的系统，允许用户上传一个数字图片，然后使用神经网络对其进行分类。
 神经网络使用PyTorch构建，并在MNIST数据集上进行训练。
 
-而数据库仅用于存储用户的信息。(实验要求)
+训练超参数与模型是可以自定义的。
+模型目前提供了MLP,AlexNet,ResNet和ViT四种模型。
+
+使用netron来可视化模型。
+但是ViT目前不支持可视化。(Tranformer_encoder层无法使用```torch.onnx.export```直接导出)
+
+而数据库仅用于存储用户的信息。(实验任务要求)
+
+用户可以设置自己的用户名和密码
 
 ## Environment/环境
 
-- Python
+- Python3.11.5
 - PyQt5
-- mysql_connector_repackaged
+- PyQt5_sip
+- mysql_connector
 - netron
 - numpy
 - onnxruntime
-- Pillow
-- PyQt5_sip
+- Pillow9.3.0
 - torch
 - torchvision
+
+Tips:
+Higher version of Pillow may not support the image convert for PyQt5
 
 ## Installation/安装
 
