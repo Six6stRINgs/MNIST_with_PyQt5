@@ -459,9 +459,9 @@ class mnist_System:
     def __mw_cls_number_setting_reset(self):
         for line in self.cls_rate_num_list:
             line.setText('')
+            line.setStyleSheet("QLabel {color: black;}")
         for lcd in self.cls_rate_lcd_list:
             lcd.setStyleSheet("QLCDNumber {color: black;}")
-            lcd.setStyleSheet("QLineEdit {color: black;}")
 
         self.mw_ori_ui.sel_label_lcdNumber.display(-1)
 
@@ -509,10 +509,10 @@ class mnist_System:
         for i, rate in enumerate(ouput[0]):
             if rate == max_rate:
                 self.cls_rate_lcd_list[i].setStyleSheet("QLCDNumber {color: red;}")
-                self.cls_rate_num_list[i].setStyleSheet("QLineEdit {color: red;}")
+                self.cls_rate_num_list[i].setStyleSheet("QLabel {color: red;}")
             else:
                 self.cls_rate_lcd_list[i].setStyleSheet("QLCDNumber {color: black;}")
-                self.cls_rate_num_list[i].setStyleSheet("QLineEdit {color: black;}")
+                self.cls_rate_num_list[i].setStyleSheet("QLabel {color: black;}")
 
         for btn in self.cls_confirm_btn_list:
             btn.setEnabled(True)
