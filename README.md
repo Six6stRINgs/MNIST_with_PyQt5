@@ -16,6 +16,8 @@ But ViT is currently not supported for visualization.
 
 Database is used only to store the user's information.
 
+Users can set their own username and password.
+
 一个学校课程软件工程的实验作业。
 使用PyQt5构建的一个简单的系统，允许用户上传一个数字图片，然后使用神经网络对其进行分类。
 神经网络使用PyTorch构建，并在MNIST数据集上进行训练。
