@@ -60,8 +60,9 @@ pip install -r requirements.txt
 
 ## Usage/使用
 
-run ```mysql.sql``` first to create the database and table.
+Run ```mysql.sql``` first to create the database and table.
 
+Then run the following command to start the system with your configuration:
 
 ```bash
 python  main.py 
@@ -69,8 +70,16 @@ python  main.py
         --user {your_db_user} 
         --password {your_db_password} 
         --database db_mnist_exp
-        --login_without_info {True/False}
+        --login_without_info
 ```
+
+Arguments:
+- ```--host```: The host of the MySQL database. Default is 'localhost'.
+- ```--user```: The user of the MySQL database. Default is 'root'.
+- ```--password```: The password of the MySQL database. Default is '123456'
+- ```--database```: The database name. Default is 'db_mnist_exp', which is created by ```mysql.sql```
+- ```--login_without_info```: Log in without checking the database and ignore the login dialog input. 
+If you just want to experience the system, you can use this argument.
 
 ## Software Snapshots/截图
 Login Dialog:
