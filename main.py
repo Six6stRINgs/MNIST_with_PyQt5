@@ -5,12 +5,12 @@ import argparse
 
 if __name__ == '__main__':
     app = QApplication([])
-    parser = argparse.ArgumentParser(description='mnist system')
+    parser = argparse.ArgumentParser(description='mnist system database configuration')
     parser.add_argument('--host', type=str, default='localhost', help='host of mysql server')
     parser.add_argument('--user', type=str, default='root', help='user of mysql server')
-    parser.add_argument('--password', type=str, default='xyb110qq', help='password of mysql server')
+    parser.add_argument('--password', type=str, default='123456', help='password of mysql server')
     parser.add_argument('--database', type=str, default='db_mnist_exp', help='database of mysql server')
-    parser.add_argument('--login_without_info', type=bool, default=True, help='login without user info')
+    parser.add_argument('--login_without_info', action='store_true', default=False, help='login without user info')
     args = parser.parse_args()
 
     db_config = {
