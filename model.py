@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 
 from networks.MLP import MLP
 from networks.AlexNet import AlexNet
-from networks.ResNet import ResNet18, ResNet34
+from networks.ResNet import ResNet
 from networks.ViT import ViT
 
 
@@ -37,9 +37,9 @@ def train_model(train_loader: DataLoader, model_config: dict,
     elif model_config['model'] == 'AlexNet':
         model = AlexNet(num_classes=10, dropout=model_config['dropout'])
     elif model_config['model'] == 'ResNet18':
-        model = ResNet18(num_classes=10)
+        model = ResNet(num_classes=10, layer=18)
     elif model_config['model'] == 'ResNet34':
-        model = ResNet34(num_classes=10)
+        model = ResNet(num_classes=10, layer=34)
     elif model_config['model'] == 'ViT':
         model = ViT(numnum_classes=10, emb_size=16)
 

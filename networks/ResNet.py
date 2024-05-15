@@ -2,9 +2,10 @@ from torch import nn
 import torch.nn.functional as F
 
 
-class ResNet18(nn.Module):
-    def __init__(self, num_classes=10):
-        super(ResNet18, self).__init__()
+class ResNet(nn.Module):
+    def __init__(self, num_classes=10, layer=18):
+        super(ResNet, self).__init__()
+        self.layer = layer
         self.pre = nn.Sequential(
             nn.Conv2d(1, 64, 3, 1, 1, bias=False),
             nn.BatchNorm2d(64),
@@ -12,10 +13,16 @@ class ResNet18(nn.Module):
             nn.MaxPool2d(3, 2, 1)
         )
         # make layer for multiple residual block
-        self.layer1 = _make_layer(64, 64, 2)
-        self.layer2 = _make_layer(64, 128, 2, stride=2)
-        self.layer3 = _make_layer(128, 256, 2, stride=2)
-        self.layer4 = _make_layer(256, 512, 2, stride=2)
+        if layer == 18:
+            self.layer1 = _make_layer(64, 64, 2)
+            self.layer2 = _make_layer(64, 128, 2, stride=2)
+            self.layer3 = _make_layer(128, 256, 2, stride=2)
+            self.layer4 = _make_layer(256, 512, 2, stride=2)
+        elif layer == 34:
+            self.layer1 = _make_layer(64, 64, 3)
+            self.layer2 = _make_layer(64, 128, 4, stride=2)
+            self.layer3 = _make_layer(128, 256, 6, stride=2)
+            self.layer4 = _make_layer(256, 512, 3, stride=2)
 
         # fc layer
         self.fc = nn.Linear(512, num_classes)
@@ -34,42 +41,7 @@ class ResNet18(nn.Module):
         return self.fc(x)
 
     def __str__(self):
-        return 'ResNet18'
-
-
-class ResNet34(nn.Module):
-    def __init__(self, num_classes=10):
-        super(ResNet34, self).__init__()
-        self.pre = nn.Sequential(
-            nn.Conv2d(1, 64, 3, 1, 1, bias=False),
-            nn.BatchNorm2d(64),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(3, 2, 1)
-        )
-        # make layer for multiple residual block
-        self.layer1 = _make_layer(64, 128, 3)
-        self.layer2 = _make_layer(128, 256, 4, stride=2)
-        self.layer3 = _make_layer(256, 512, 6, stride=2)
-        self.layer4 = _make_layer(512, 512, 3, stride=2)
-
-        # fc layer
-        self.fc = nn.Linear(512, num_classes)
-
-    def forward(self, x):
-        x = x.view(-1, 1, 28, 28)
-        x = self.pre(x)
-
-        x = self.layer1(x)
-        x = self.layer2(x)
-        x = self.layer3(x)
-        x = self.layer4(x)
-
-        x = F.avg_pool2d(x, 2)
-        x = x.view(x.size(0), -1)
-        return self.fc(x)
-
-    def __str__(self):
-        return 'ResNet34'
+        return f'ResNet{self.layer}'
 
 
 class ResidualBlock(nn.Module):
