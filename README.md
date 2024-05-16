@@ -39,6 +39,8 @@ Users can set their own username and password.
 - Python3.11.5
 - PyQt5
 - PyQt5_sip
+- PyQtWebEngine-Qt5
+- PyQtChart-Qt5
 - mysql_connector
 - netron
 - numpy
@@ -47,8 +49,9 @@ Users can set their own username and password.
 - torch
 - torchvision
 
-Tips:
-Higher version of Pillow may not support the image convert for PyQt5
+### Tips:
+- Higher version of Pillow may not support the image convert for PyQt5.
+- PyQtWebEngine-Qt5 and PyQtChart-Qt5 need to be installed independently.
 
 ## Installation/安装
 
