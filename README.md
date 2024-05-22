@@ -36,16 +36,17 @@ Users can set their own username and password.
 ## Environment/环境
 
 - MySQL
-- Python3.11.5
+- Python==3.11.5
 - PyQt5
 - PyQt5_sip
-- PyQtWebEngine-Qt5
-- PyQtChart-Qt5
+- PyQtWebEngine
+- PyQtChart
 - mysql_connector
 - netron
 - numpy
+- onnx
 - onnxruntime
-- Pillow9.3.0
+- Pillow==9.3.0
 - torch
 - torchvision
 
