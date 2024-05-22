@@ -65,6 +65,8 @@ pip install -r requirements.txt
 
 Run ```mysql.sql``` first to create the database and table.
 
+Be sure there is at least one user!
+
 Then run the following command to start the system with your configuration:
 
 ```bash
