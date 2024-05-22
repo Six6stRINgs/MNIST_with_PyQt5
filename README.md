@@ -52,7 +52,7 @@ Users can set their own username and password.
 
 ### Tips:
 - Higher version of Pillow may not support the image convert for PyQt5.
-- PyQtWebEngine-Qt5 and PyQtChart-Qt5 need to be installed independently.
+- PyQtWebEngine and PyQtChart need to be installed independently.
 
 ## Installation/安装
 
