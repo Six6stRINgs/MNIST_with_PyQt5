@@ -7,3 +7,6 @@ create table user (
     password text not null,
     authority tinyint(1)
 );
+
+# be sure there is at least one admin user!
+insert into user values (0, 'admin', '123456', 1);

@@ -1,11 +1,12 @@
 mysql-connector-python~=8.4.0
 netron==7.6.3
 numpy==1.24.4
+onnx==1.16.0
 onnxruntime==1.17.3
 Pillow==9.3.0
 PyQt5==5.15.9
 PyQt5_sip==12.13.0
-PyQtWebEngine-Qt5==5.15.2
-PyQtChart-Qt5==5.15.2
+PyQtWebEngine==5.15.6
+PyQtChart==5.15.6
 torch==2.1.0
 torchvision==0.16.0
