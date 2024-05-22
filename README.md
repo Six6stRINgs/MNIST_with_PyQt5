@@ -51,8 +51,8 @@ Users can set their own username and password.
 - torchvision
 
 ### Tips:
-- Higher version of Pillow may not support the image convert for PyQt5.
-- PyQtWebEngine and PyQtChart need to be installed independently.
+- Higher version of ```Pillow``` may not support the image convert for PyQt5.
+- ```PyQtWebEngine```  and ```PyQtChart```  need to be installed independently.
 
 ## Installation/安装
 
