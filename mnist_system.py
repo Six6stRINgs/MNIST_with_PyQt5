@@ -243,7 +243,8 @@ class mnist_System:
             cursor.execute("SELECT * FROM user")
         res = cursor.fetchall()
         self.mw_ori_ui.usr_tablewidget.setRowCount(len(res))
-        self.mw_ori_ui.usr_tablewidget.setColumnCount(len(res[0]))
+        if res:
+            self.mw_ori_ui.usr_tablewidget.setColumnCount(len(res[0]))
         self.mw_ori_ui.usr_tablewidget.setHorizontalHeaderLabels(['User Id', 'Name', 'Password', 'Authority'])
         self.mw_ori_ui.usr_tablewidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.mw_ori_ui.usr_tablewidget.setEditTriggers(QTableWidget.NoEditTriggers)
